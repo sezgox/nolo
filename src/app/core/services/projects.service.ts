@@ -14,7 +14,7 @@ export class ProjectsService {
   loading$ = this.loadingSubject.asObservable();
 
   //apiRoute: string = 'https://7q8hd2bw-3002.uks1.devtunnels.ms/projects/';
-  apiRoute: string = 'http://localhost:3002/projects/'
+  apiRoute: string = 'https://nolob.onrender.com/projects/'
 
   constructor(private http: HttpClient) { }
 
