@@ -37,7 +37,7 @@ export class NewProjectComponent {
     this.project.responsabilities = this.project.responsabilities.filter(resp => resp)
     this.project.links = this.project.links.filter(link => link.name && link.url)
     console.log(this.project.links)
-    if(!this.selectedFiles || !this.project.title || !this.project.description || !this.project.genre || this.project.links.length == 0 || this.project[this.roleType].length == 0 || this.project.date){
+    if(!this.selectedFiles || !this.project.title || !this.project.description || !this.project.genre || this.project.links.length == 0 || this.project[this.roleType].length == 0 || !this.project.date){
       console.log('Rellena todos los campos!!')
       return
     }else{
