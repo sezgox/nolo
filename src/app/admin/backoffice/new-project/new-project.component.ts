@@ -51,7 +51,7 @@ export class NewProjectComponent {
           if(!result.success){
             console.log(result.data)
           }else{
-            console.log('Proyecto subido...')
+            console.log(result.data)
             this.router.navigate(['/admin/backoffice']);
           }
         },error: (err) => {
@@ -73,10 +73,12 @@ export class NewProjectComponent {
   addField(field: string){
     if(field == 'responsabilities' || field == 'skills'){
       this.project[field].push('');
-    }
-    if(field == 'links'){
+    }else if(field == 'links'){
       this.project[field].push({name:'',url:''});
     }
+    console.log(this.project.responsabilities)
+    console.log(this.project.skills)
+    console.log(this.project.links)
   }
 
   removeField(field:string,index:number){
