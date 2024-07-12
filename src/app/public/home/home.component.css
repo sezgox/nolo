@@ -88,9 +88,6 @@ mat-spinner{
 .poster h2{
     animation: entrance 1.5s forwards;
 }
-.poster div{
-    animation: entrance 2s forwards;
-}
 @keyframes entrance {
     from{
         scale: 0;
@@ -128,7 +125,6 @@ mat-spinner{
     animation-play-state: paused;
 }
 .hasVisited {
-    animation: none;
     animation: shutdown 0.7s cubic-bezier(0.755, 0.05, 0.855, 0.06) both, turnUp 1s 0.8s ease-in-out forwards;
 }
 
