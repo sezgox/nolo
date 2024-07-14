@@ -61,7 +61,7 @@ export class EditProjectComponent implements OnInit{
     this.project.skills = this.project.skills.filter(skill => skill)
     this.project.responsabilities = this.project.responsabilities.filter(resp => resp)
     this.project.links = this.project.links.filter(link => link.name && link.url)
-    if(this.selectedFiles.length == 0 || !this.project.title || !this.project.description || !this.project.genre || this.project.links.length == 0 || this.project[this.roleType].length == 0 || !this.project.date){
+    if((this.selectedFiles.length == 0 && this.project.media.length == 0) || !this.project.title || !this.project.description || !this.project.genre || this.project.links.length == 0 || this.project[this.roleType].length == 0 || !this.project.date){
       console.log('Rellena todos los campos!!')
     }else{
       this.selectedFiles = this.selectedFiles.filter(file => typeof file != 'string')
