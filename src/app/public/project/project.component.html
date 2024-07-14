@@ -4,10 +4,10 @@
     <main>
         <section>
             <div class="header">
-                <h2 style="color: var();" [style.view-transition-name]="'transition-title-'+project.id" >{{ project.title }}</h2>
-                <h3 style="color: var(--darkPrimary);" [style.view-transition-name]="'transition-genre-'+project.id">{{ project.genre }}</h3>
+                <h2 style="color: var();" [style.view-transition-name]="'transition-title-'+project._id" >{{ project.title }}</h2>
+                <h3 style="color: var(--darkPrimary);" [style.view-transition-name]="'transition-genre-'+project._id">{{ project.genre }}</h3>
             </div>
-            <p style="text-align: center;"><img loading="lazy" [src]="project.media.mediaPath + project.media.images[0]" alt="" [style.view-transition-name]="'transition-img-'+project.id"></p>
+            <p style="text-align: center;"><img loading="lazy" [src]="project.media[0]" alt="" [style.view-transition-name]="'transition-img-'+project._id"></p>
             <div class="info">
                 <h3 style="margin-top: 5vh; color: var(--primary);  text-align: center; text-decoration: underline;">Description</h3>
                 <div style="margin-bottom: 5vh;">
@@ -36,9 +36,9 @@
                 </div>
                 <h3 style="color: var(--primary); text-align: center; text-decoration: underline;">Visuals</h3>
                 <article>
-                    @for (img of project.media.images; track $index) {
+                    @for (img of project.media; track $index) {
                         @if($index > 0){
-                            <img #visual [src]="project.media.mediaPath + img" [alt]="img" loading="lazy">
+                            <img #visual [src]="img" [alt]="img" loading="lazy">
                         }
                     }
                 </article>

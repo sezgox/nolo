@@ -12,7 +12,8 @@ import { Project } from 'src/app/core/interfaces/Project';
 })
 export class ProjectCardComponent {
 
-  @Input() project: Project = {title:'',description:'',genre:'',media:{mediaPath: '', images: []},responsabilities:[], skills:[], links:[], date: ''};
+
+  @Input() project: Project = {title:'',description:'',genre:'',media:[],responsabilities:[], skills:[], links:[], date: '', _id: ''};
 
   router = inject(Router);
 

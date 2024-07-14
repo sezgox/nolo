@@ -36,7 +36,6 @@ export class NewProjectComponent {
     this.project.skills = this.project.skills.filter(skill => skill)
     this.project.responsabilities = this.project.responsabilities.filter(resp => resp)
     this.project.links = this.project.links.filter(link => link.name && link.url)
-    console.log(this.project.links)
     if(!this.selectedFiles || !this.project.title || !this.project.description || !this.project.genre || this.project.links.length == 0 || this.project[this.roleType].length == 0 || !this.project.date){
       console.log('Rellena todos los campos!!')
       return
@@ -76,9 +75,6 @@ export class NewProjectComponent {
     }else if(field == 'links'){
       this.project[field].push({name:'',url:''});
     }
-    console.log(this.project.responsabilities)
-    console.log(this.project.skills)
-    console.log(this.project.links)
   }
 
   removeField(field:string,index:number){
@@ -90,9 +86,5 @@ export class NewProjectComponent {
   toggleRoles(){
     this.roles = !this.roles
     this.roleType = this.roles == true ? 'responsabilities' : 'skills'
-  }
-
-  klk(){
-    console.log(this.project.date)
   }
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../enviroment/enviroment';
 import { Project } from '../interfaces/Project';
 
 @Injectable({
@@ -13,8 +14,8 @@ export class ProjectsService {
   proyectos$ = this.proyectosSubject.asObservable();
   loading$ = this.loadingSubject.asObservable();
 
-  //apiRoute: string = 'https://7q8hd2bw-3002.uks1.devtunnels.ms/projects/';
-  apiRoute: string = 'https://nolob.onrender.com/projects/'
+  apiRoute: string = `${environment.apiUrl}/projects/`;
+  //apiRoute: string = 'https://nolob.onrender.com/projects/'
 
   constructor(private http: HttpClient) { }
 
@@ -54,8 +55,8 @@ export class ProjectsService {
     return this.http.post(`${this.apiRoute}`,formDataProject);
   }
 
-  updateProject(formDataProject: FormData):Observable<any>{
-    return this.http.put(`${this.apiRoute}`,formDataProject)
+  updateProject(formDataProject: FormData,id:string):Observable<any>{
+    return this.http.put(`${this.apiRoute}${id}`,formDataProject)
   }
 
   removeProject(id: string):Observable<any>{

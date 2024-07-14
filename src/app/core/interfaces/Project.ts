@@ -1,12 +1,9 @@
 export type Project = {
-    id?: string
+    _id?: string
     title: string,
     genre: string,
     description: string,
-    media: {
-        mediaPath: string,
-        images: string[]
-    },
+    media: string[],
     responsabilities: string[],
     skills: string[],
     links:{name: string,url: string}[],

@@ -61,8 +61,8 @@
         (change)="onFileSelected($event)" #fileUpload>
         <div class="file-upload" style="display: flex; align-items: flex-end; justify-content: space-between;" >
             <div style="display: flex; flex-direction: column; width: 100%;">
-                @for (img of project.media.images; track $index) {
-                    <p>{{ img }}<button (click)="removeImage($index)" class="remove"><i class="fa-solid fa-trash"></i></button></p>
+                @for (img of project.media; track $index) {
+                    <p>{{ img.split('/')[img.split('/').length - 1] }}<button (click)="removeImage($index)" class="remove"><i class="fa-solid fa-trash"></i></button></p>
                 }@empty {
                     <p>Nothing yet...</p>
                 }

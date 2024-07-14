@@ -43,7 +43,7 @@ export class BackofficeComponent implements OnInit{
         this.projectsService.removeProject(id).subscribe({
           next: (result) => {
             if(result.success){
-              this.projects = this.projects.filter(project => project.id !== id)
+              this.projects = this.projects.filter(project => project._id !== id)
               this.getProjects();
               console.log(result.data)
             }

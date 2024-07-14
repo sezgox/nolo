@@ -17,14 +17,11 @@ export class EditProjectComponent implements OnInit{
   
   base64Image: string | ArrayBuffer | null = '';
   project: Project = {
-    id: '',
+    _id: '',
     title : '',
     description : '',
     genre: '',
-    media : {
-      mediaPath: '',
-      images: []
-    },
+    media : [],
     responsabilities: [],
     skills: [],
     links: [],
@@ -50,7 +47,6 @@ export class EditProjectComponent implements OnInit{
   }
 
   getProject(projectName: string){
-    console.log(projectName)
     this.projectsService.getProjectByName(projectName).subscribe({
       next: (result) => {
         if(result.success){
@@ -65,8 +61,7 @@ export class EditProjectComponent implements OnInit{
     this.project.skills = this.project.skills.filter(skill => skill)
     this.project.responsabilities = this.project.responsabilities.filter(resp => resp)
     this.project.links = this.project.links.filter(link => link.name && link.url)
-    console.log(this.project.links)
-    if(!this.selectedFiles || !this.project.title || !this.project.description || !this.project.genre || this.project.links.length == 0 || this.project[this.roleType].length == 0 || !this.project.date){
+    if(this.selectedFiles.length == 0 || !this.project.title || !this.project.description || !this.project.genre || this.project.links.length == 0 || this.project[this.roleType].length == 0 || !this.project.date){
       console.log('Rellena todos los campos!!')
     }else{
       this.selectedFiles = this.selectedFiles.filter(file => typeof file != 'string')
@@ -75,30 +70,31 @@ export class EditProjectComponent implements OnInit{
       this.selectedFiles.forEach(file => {
         formData.append('media',file);
       });
-      this.projectsService.updateProject(formData).subscribe({
-        next: (result) => {
-          if(!result.success){
-            console.log(result.data)
-          }else{
-            console.log(result.data)
-            this.router.navigate(['/admin/backoffice']);
+      if(this.project._id){
+        this.projectsService.updateProject(formData,this.project._id).subscribe({
+          next: (result) => {
+            if(!result.success){
+              console.log(result.data)
+            }else{
+              console.log(result.data)
+              this.router.navigate(['/admin/backoffice']);
+            }
+          },error: (err) => {
+            console.log(err)
           }
-        },error: (err) => {
-          console.log(err)
-        }
-      })
+        })
+      }
     }
   }
   
   removeImage(index: number){
-    this.selectedFiles = this.selectedFiles.filter(file => file != this.project.media.images[index])
-    this.project.media.images.splice(index,1);
-    console.log(this.project.media.images)
+    this.selectedFiles = this.selectedFiles.filter(file => file != this.project.media[index])
+    this.project.media.splice(index,1);
   }
 
   onFileSelected(event: any) {
     const file:File = event.target.files[0];
-    this.project.media.images.push(file.name);
+    this.project.media.push(file.name);
     this.selectedFiles.push(file);
   }
   addField(field: string){

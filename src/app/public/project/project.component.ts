@@ -20,14 +20,11 @@ export class ProjectComponent implements OnInit, AfterViewInit{
   route = inject(ActivatedRoute);
   router = inject(Router);
   project: Project = {
-    id: undefined,
+    _id: undefined,
     title: 'OnTime!',
     genre: '',
     description: '',
-    media: {
-      mediaPath: '',
-      images: []
-    },
+    media: [],
     responsabilities: [],
     skills: [],
     links: [],
@@ -44,6 +41,7 @@ export class ProjectComponent implements OnInit, AfterViewInit{
           projectName = param.get('project');
           const encodedParam = encodeURIComponent(projectName);
           this.getProject(encodedParam);
+
         }
       });
     }
@@ -64,12 +62,6 @@ export class ProjectComponent implements OnInit, AfterViewInit{
           image.nativeElement.style.gridRow = 'span 3';
         }
       }
-/*       if(image.nativeElement.offsetWidth > image.nativeElement.offsetHeight){
-        image.nativeElement.style.aspectRatio = '16/9';
-      }else{
-        image.nativeElement.style.aspectRatio = '9/16';
-        image.nativeElement.style.gridRow = 'span 2';
-      } */
     })
 
   }
