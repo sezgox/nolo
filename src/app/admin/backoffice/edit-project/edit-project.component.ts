@@ -88,7 +88,7 @@ export class EditProjectComponent implements OnInit{
   }
   
   removeImage(index: number){
-    this.selectedFiles = this.selectedFiles.filter(file => file != this.project.media[index])
+    this.selectedFiles = this.selectedFiles.filter(file => file.name != this.project.media[index])
     this.project.media.splice(index,1);
   }
 
