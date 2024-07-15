@@ -17,8 +17,8 @@
                     @for (link of project.links; track $index) {
                         <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
 
-                            <input type="text" placeholder="Link Name" style="width: 40%;" [(ngModel)]="project.links[$index].name" [name]="'link'+$index" id="nameLink">
-                            <input type="text" placeholder="https://url_to_game.com" style="width: 40%; margin-left: 12px;" [(ngModel)]="project.links[$index].url" [name]="'link'+$index" id="urlLink">
+                            <input type="text" placeholder="Link Name" style="width: 40%;" [(ngModel)]="project.links[$index].name" [name]="'link-name'+$index" id="nameLink">
+                            <input type="text" placeholder="https://url_to_game.com" style="width: 40%; margin-left: 12px;" [(ngModel)]="project.links[$index].url" [name]="'link-url'+$index" id="urlLink">
 
                             <button 
                                 (click)="removeField('links',$index)" 
