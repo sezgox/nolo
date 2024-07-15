@@ -195,7 +195,7 @@ mat-spinner{
     flex-direction: column;
 }
 .beyond-separator{
-    width: 20%; border:1px solid var(--primary); margin: 5vh auto;
+    width: 90%; border:1px solid var(--primary); margin: 5vh auto;
 }
 #beyond section{
     flex-direction: column;
@@ -221,9 +221,12 @@ mat-spinner{
     outline: 2px solid var(--primary);
     background-color: var(--shadePrimary);
     border-radius: 16px;
+    margin-top: 30px;
 }
 #beyond p{
     align-content: center;
+    font-size: 12px;
+
 }
 #beyond h4{
     margin-bottom: 0;
@@ -262,6 +265,7 @@ mat-spinner{
     #beyond img{
         width: 25vw;
         height: 25vw;
+        margin-top: 0;
     }
     .info{
         flex-direction: row;
@@ -289,6 +293,9 @@ mat-spinner{
     }
     #beyond h4{
         margin-top: 8px;
+    }
+    #beyond p{
+        font-size: 14px;
     }
     h1{
         font-size: 2.66rem;
