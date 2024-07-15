@@ -51,7 +51,9 @@ export class EditProjectComponent implements OnInit{
       next: (result) => {
         if(result.success){
           this.project = result.data
-          this.roleType = this.project.responsabilities.length > 0 ? 'responsabilities' : 'skills';
+          this.roles = this.project.responsabilities.length > 0;
+          this.roleType = this.roles ? 'responsabilities' : 'skills'
+          console.log(this.roles + this.roleType)
         }
       }
     })
@@ -113,8 +115,7 @@ export class EditProjectComponent implements OnInit{
   }
 
   toggleRoles(){
-    this.roles = !this.roles
-    this.roleType = this.roles == true ? 'responsabilities' : 'skills'
+    this.roleType = this.roles == true ? 'responsabilities' : 'skills';
   }
 
 }

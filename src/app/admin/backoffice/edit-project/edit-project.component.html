@@ -29,15 +29,15 @@
                     }
                 </div>
             </div>
-            <div #roles style="width: 100%;">
+            <div style="width: 100%;">
                 <label for="">Roles:</label>
                 <div style="display: flex; justify-content: space-evenly;">
                     <div>
-                        <input type="radio" id="roles" name="skrol" [checked]="roles" (change)="toggleRoles()">
+                        <input type="radio" id="roles" name="roles" [(ngModel)]="roles" [value]="true" (change)="toggleRoles()">
                         <label for="roles">Responsabilities</label>
                     </div>
                     <div>
-                        <input type="radio" id="skills" name="skrol" [checked]="!roles" (change)="toggleRoles()">
+                        <input type="radio" id="skills" name="skills" [(ngModel)]="roles" [value]="false" (change)="toggleRoles()">
                         <label for="skills">Skills learnt</label>
                     </div>
                 </div>
