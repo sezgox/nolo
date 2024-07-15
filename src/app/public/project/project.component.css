@@ -35,6 +35,9 @@ h2{
     font-size: 3rem;
     margin: 1.5rem;
 }
+p,span{
+    align-content: center;
+}
 img{
     width: 100%;
 }
@@ -51,14 +54,11 @@ a:hover{
 .skrol{
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 @media (min-width:1024px) {
-    .skrol{
-        flex-direction: row;
-        justify-content: space-around;
-    }
-    p{
+    p,span,a{
         font-size: 16px;
     }
 }
@@ -92,7 +92,7 @@ a:hover{
         font-size: 4rem;
         margin: 2rem;
     }
-    p{
+    p,span,a{
         font-size: 18px;
     }
 }
