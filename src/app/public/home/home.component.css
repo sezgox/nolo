@@ -195,7 +195,7 @@ mat-spinner{
     flex-direction: column;
 }
 .beyond-separator{
-    width: 90%; border:1px solid var(--primary); margin: 5vh auto;
+    width: 100%; border:1px solid var(--primary); margin: 5vh auto;
 }
 #beyond section{
     flex-direction: column;
