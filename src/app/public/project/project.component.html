@@ -7,7 +7,7 @@
                 <h2 style="color: var();" [style.view-transition-name]="'transition-title-'+project._id" >{{ project.title }}</h2>
                 <h3 style="color: var(--darkPrimary);" [style.view-transition-name]="'transition-genre-'+project._id">{{ project.genre }}</h3>
             </div>
-            <p style="text-align: center;"><img loading="lazy" [src]="project.media[0]" alt="" [style.view-transition-name]="'transition-img-'+project._id"></p>
+            <p style="text-align: center;"><img loading="lazy" [src]="project.media[0]" [alt]="project.title + ' Poster'" [style.view-transition-name]="'transition-img-'+project._id"></p>
             <div class="info">
                 <h3 style="margin-top: 5vh; color: var(--primary);">Description</h3>
                 <div style="margin-bottom: 5vh;">
@@ -38,7 +38,7 @@
                 <article>
                     @for (img of project.media; track $index) {
                         @if($index > 0){
-                            <img #visual [src]="img" [alt]="img" loading="lazy">
+                            <img #visual [src]="img" [alt]="project.title + ' Visual ' + $index" loading="lazy">
                         }
                     }
                 </article>
