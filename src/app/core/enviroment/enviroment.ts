@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://nolob.onrender.com'
+    apiUrl: 'http://localhost:3002'
   };

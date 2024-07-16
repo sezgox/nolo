@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  apiRoute: string = `${environment.apiUrl}`;
+  apiRoute: string = environment.apiUrl;
   //apiRoute: string = 'https://nolob.onrender.com/'
 
   login(username: string,password: string):Observable<any>{
