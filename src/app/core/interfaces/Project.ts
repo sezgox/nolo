@@ -7,6 +7,7 @@ export type Project = {
     responsabilities: string[],
     skills: string[],
     links:{name: string,url: string}[],
+    others?: string[],
     date: string
 }
 
@@ -18,5 +19,6 @@ export type ProjectForm = {
     responsabilities: string[],
     links:{name: string,url: string}[]
     skills: string[],
+    others?: string[],
     date: string
 }

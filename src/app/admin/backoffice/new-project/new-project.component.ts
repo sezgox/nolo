@@ -26,6 +26,8 @@ export class NewProjectComponent {
     date: new Date().toISOString()
   }
 
+  others: string = '';
+
   roles: boolean = true;
   roleType: 'responsabilities' | 'skills' = 'responsabilities';
 
@@ -40,6 +42,10 @@ export class NewProjectComponent {
       console.log('Rellena todos los campos!!')
       return
     }else{
+      if(this.others){
+        this.project.others = [];
+        this.project.others.push(this.others);
+      }
       const formData = new FormData();
       formData.append('project',JSON.stringify(this.project));
       this.selectedFiles.forEach(file => {

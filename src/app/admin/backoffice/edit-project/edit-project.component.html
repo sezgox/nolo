@@ -56,6 +56,8 @@
                 }
             </div>
         </div>
+        <label for="others">Others:</label>
+        <input type="text" name="others" [(ngModel)]="others" placeholder="Mete aquí tu basura de video de youtube mamahuevo..." id="others">
         <label for="image">Imágenes:</label>
         <input type="file" class="file-input" style="display: none;" accept="image/*" id="image"
         (change)="onFileSelected($event)" #fileUpload>

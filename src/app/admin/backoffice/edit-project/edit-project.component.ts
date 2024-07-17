@@ -28,6 +28,8 @@ export class EditProjectComponent implements OnInit{
     date: ''
   }
 
+  others: string = '';
+
   roles: boolean = true;
   roleType: 'responsabilities' | 'skills' = 'responsabilities';
   
@@ -53,7 +55,9 @@ export class EditProjectComponent implements OnInit{
           this.project = result.data
           this.roles = this.project.responsabilities.length > 0;
           this.roleType = this.roles ? 'responsabilities' : 'skills'
-          console.log(this.roles + this.roleType)
+          if(this.project.others){
+            this.others = this.project.others[0]
+          }
         }
       }
     })
@@ -66,6 +70,12 @@ export class EditProjectComponent implements OnInit{
     if((this.selectedFiles.length == 0 && this.project.media.length == 0) || !this.project.title || !this.project.description || !this.project.genre || this.project.links.length == 0 || this.project[this.roleType].length == 0 || !this.project.date){
       console.log('Rellena todos los campos!!')
     }else{
+      if(this.others){
+        this.project.others = [];
+        this.project.others.push(this.others);
+      }else{
+        this.project.others = [];
+      }
       this.selectedFiles = this.selectedFiles.filter(file => typeof file != 'string')
       const formData = new FormData();
       formData.append('project',JSON.stringify(this.project));

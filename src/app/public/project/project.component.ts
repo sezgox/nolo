@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren, inject } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from 'src/app/core/interfaces/Project';
 import { ProjectsService } from 'src/app/core/services/projects.service';
@@ -16,6 +17,8 @@ export class ProjectComponent implements OnInit, AfterViewInit{
 
   @ViewChildren('visual') images!: QueryList<ElementRef>
 
+  sanitizer = inject(DomSanitizer);
+
   projectsService = inject(ProjectsService);
   route = inject(ActivatedRoute);
   router = inject(Router);
@@ -30,6 +33,7 @@ export class ProjectComponent implements OnInit, AfterViewInit{
     links: [],
     date: ''
   }
+  youtube: SafeResourceUrl = '';
 
   ngOnInit(): void {
     window.scrollTo(0,0);
@@ -41,7 +45,6 @@ export class ProjectComponent implements OnInit, AfterViewInit{
           projectName = param.get('project');
           const encodedParam = encodeURIComponent(projectName);
           this.getProject(encodedParam);
-
         }
       });
     }
@@ -57,7 +60,6 @@ export class ProjectComponent implements OnInit, AfterViewInit{
           image.nativeElement.style.aspectRatio = '16/9';
           image.nativeElement.style.gridRow = 'span 1';
         }else{
-          console.log(imgElement.naturalHeight)
           image.nativeElement.style.aspectRatio = '9/16';
           image.nativeElement.style.gridRow = 'span 3';
         }
@@ -72,6 +74,11 @@ export class ProjectComponent implements OnInit, AfterViewInit{
         if(result.success){
           this.project = result.data
           this.project.description = this.project.description.replace(/\n/g, "<br>");
+          if(this.project.others){
+            const url = 'https://www.youtube.com/embed/'+this.project.others[0].split('v=')[this.project.others[0].split('v=').length - 1];
+            this.youtube = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+            console.log(this.youtube)
+          }
         }
       }
     })

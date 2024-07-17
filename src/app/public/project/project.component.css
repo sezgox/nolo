@@ -57,6 +57,7 @@ a:hover{
     gap: 8px;
 }
 
+
 @media (min-width:1024px) {
     article{
         margin: auto;
@@ -66,6 +67,11 @@ a:hover{
         justify-items: center;
         align-items: center;
         gap: 16px;
+    }
+    iframe{
+        grid-column: span 2;
+        aspect-ratio: 16/9;
+        width: 100%;
     }
     p,span,a{
         font-size: 16px;
