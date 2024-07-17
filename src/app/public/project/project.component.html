@@ -16,6 +16,10 @@
                     @for (link of project.links; track $index) {
                         <p><a [href]="link.url" target="_blank" style="text-decoration: underline;">{{ link.name }}</a></p>
                     }
+                    @if (project.file) {
+                        <h4 style="margin: 0;">Download:</h4>
+                        <p><a [href]="project.file">{{project.file.split('/')[project.file.split('/').length - 1]}}</a></p>
+                    }
                 </div>
                 <div style="margin-bottom: 5vh;">
                     @if(project.responsabilities.length > 0){

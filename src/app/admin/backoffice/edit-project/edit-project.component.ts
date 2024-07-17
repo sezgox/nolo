@@ -29,6 +29,8 @@ export class EditProjectComponent implements OnInit{
   }
 
   others: string = '';
+  file: File | undefined = undefined;
+  filename: string = '';
 
   roles: boolean = true;
   roleType: 'responsabilities' | 'skills' = 'responsabilities';
@@ -58,6 +60,9 @@ export class EditProjectComponent implements OnInit{
           if(this.project.others){
             this.others = this.project.others[0]
           }
+          if(this.project.file){
+            this.filename = this.project.file.split('/')[this.project.file.split('/').length - 1]
+          }
         }
       }
     })
@@ -76,8 +81,16 @@ export class EditProjectComponent implements OnInit{
       }else{
         this.project.others = [];
       }
-      this.selectedFiles = this.selectedFiles.filter(file => typeof file != 'string')
+      if(this.filename !== this.project.file?.split('/')[this.project.file.split('/').length - 1]){
+        this.project.file = '';
+      }
       const formData = new FormData();
+      if(this.file){
+        formData.append('files',this.file);
+        console.log(this.file)
+      }
+      this.selectedFiles = this.selectedFiles.filter(file => typeof file != 'string')
+      
       formData.append('project',JSON.stringify(this.project));
       this.selectedFiles.forEach(file => {
         formData.append('media',file);
@@ -104,10 +117,20 @@ export class EditProjectComponent implements OnInit{
     this.project.media.splice(index,1);
   }
 
+  removeFile(){
+    this.file = undefined;
+    this.filename = '';
+  }
+
   onFileSelected(event: any) {
     const file:File = event.target.files[0];
-    this.project.media.push(file.name);
-    this.selectedFiles.push(file);
+    if(event.target.id == 'image'){
+      this.project.media.push(file.name);
+      this.selectedFiles.push(file);
+    }else{
+      this.file = file;
+      this.filename = this.file.name;
+    }
   }
   addField(field: string){
     if(field == 'responsabilities' || field == 'skills'){

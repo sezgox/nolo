@@ -27,6 +27,7 @@ export class NewProjectComponent {
   }
 
   others: string = '';
+  file: File | undefined = undefined;
 
   roles: boolean = true;
   roleType: 'responsabilities' | 'skills' = 'responsabilities';
@@ -47,6 +48,10 @@ export class NewProjectComponent {
         this.project.others.push(this.others);
       }
       const formData = new FormData();
+      if(this.file){
+        formData.append('files',this.file);
+        console.log(this.file)
+      }
       formData.append('project',JSON.stringify(this.project));
       this.selectedFiles.forEach(file => {
         formData.append('media',file);
@@ -70,9 +75,14 @@ export class NewProjectComponent {
     this.selectedFiles.splice(index,1);
   }
 
+
   onFileSelected(event: any) {
     const file:File = event.target.files[0];
-    this.selectedFiles.push(file);
+    if(event.target.id == 'image'){
+      this.selectedFiles.push(file);
+    }else{
+      this.file = file;
+    }
   }
 
   addField(field: string){

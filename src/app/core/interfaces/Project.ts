@@ -8,6 +8,7 @@ export type Project = {
     skills: string[],
     links:{name: string,url: string}[],
     others?: string[],
+    file?: string,
     date: string
 }
 

@@ -58,9 +58,20 @@
         </div>
         <label for="others">Others:</label>
         <input type="text" name="others" [(ngModel)]="others" placeholder="Mete aquí tu basura de video de youtube mamahuevo..." id="others">
+        <div>
+            <label for="file">File:</label>
+            <p style="margin-top: 8px;"><button mat-mini-fab color="primary" class="add" (click)="fileUpload.click()"><i class="fa-solid fa-paperclip"></i></button></p>
+            <div style="display: flex;align-items: center; align-content: center;">
+                <input type="file" style="display: none;" name="file" id="file" (change)="onFileSelected($event)" #fileUpload>
+                @if (filename) {
+                    <span style="width: 90%;">{{filename}}</span>
+                    <button (click)="removeFile()" class="remove" style="margin-left: auto; margin-right: 0;"><i class="fa-solid fa-trash"></i></button>
+                }
+            </div>
+        </div>
         <label for="image">Imágenes:</label>
         <input type="file" class="file-input" style="display: none;" accept="image/*" id="image"
-        (change)="onFileSelected($event)" #fileUpload>
+        (change)="onFileSelected($event)" #imageUpload>
         <div class="file-upload" style="display: flex; align-items: flex-end; justify-content: space-between;" >
             <div style="display: flex; flex-direction: column; width: 100%;">
                 @for (img of project.media; track $index) {
@@ -70,7 +81,7 @@
                 }
             </div>
         
-            <button mat-mini-fab color="primary" class="add" (click)="fileUpload.click()"><i class="fa-solid fa-paperclip"></i></button>
+            <button mat-mini-fab color="primary" class="add" (click)="imageUpload.click()"><i class="fa-solid fa-paperclip"></i></button>
         </div>
         <div>
             <label for="date" style="margin-right: 16px;">Start date:</label>
