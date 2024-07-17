@@ -34,6 +34,7 @@ export class ProjectComponent implements OnInit, AfterViewInit{
     date: ''
   }
   youtube: SafeResourceUrl = '';
+  video: boolean = false;
 
   ngOnInit(): void {
     window.scrollTo(0,0);
@@ -77,6 +78,7 @@ export class ProjectComponent implements OnInit, AfterViewInit{
           if(this.project.others){
             const url = 'https://www.youtube.com/embed/'+this.project.others[0].split('v=')[this.project.others[0].split('v=').length - 1];
             this.youtube = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+            this.video = true;
             console.log(this.youtube)
           }
         }
