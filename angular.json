@@ -45,12 +45,6 @@
                   "maximumError": "500mb"
                 }
               ],
-              "fileReplacements": [
-                {
-                  "replace": "src/app/core/environment/environment.ts",
-                  "with": "src/app/core/environment/environment.prod.ts"
-                }
-              ],
               "outputHashing": "all"
             },
             "development": {
