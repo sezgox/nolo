@@ -36,10 +36,10 @@ export class NewProjectComponent {
   router = inject(Router);
 
   uploadProject(){
-    this.project.skills = this.project.skills.filter(skill => skill)
-    this.project.responsabilities = this.project.responsabilities.filter(resp => resp)
-    this.project.links = this.project.links.filter(link => link.name && link.url)
-    if(!this.selectedFiles || !this.project.title || !this.project.description || !this.project.genre || this.project.links.length == 0 || this.project[this.roleType].length == 0 || !this.project.date){
+    this.project.skills = this.project.skills?.filter(skill => skill)
+    this.project.responsabilities = this.project.responsabilities?.filter(resp => resp)
+    this.project.links = this.project.links?.filter(link => link.name && link.url)
+    if(!this.project.title || !this.project.date){
       console.log('Rellena todos los campos!!')
       return
     }else{
@@ -87,15 +87,15 @@ export class NewProjectComponent {
 
   addField(field: string){
     if(field == 'responsabilities' || field == 'skills'){
-      this.project[field].push('');
+      this.project[field]?.push('');
     }else if(field == 'links'){
-      this.project[field].push({name:'',url:''});
+      this.project[field]?.push({name:'',url:''});
     }
   }
 
   removeField(field:string,index:number){
     if(field == 'links' || field == 'responsabilities' || field == 'skills'){
-      this.project[field].splice(index,1);
+      this.project[field]?.splice(index,1);
     }
   }
 

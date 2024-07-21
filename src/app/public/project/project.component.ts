@@ -74,12 +74,11 @@ export class ProjectComponent implements OnInit, AfterViewInit{
       next: (result) => {
         if(result.success){
           this.project = result.data
-          this.project.description = this.project.description.replace(/\n/g, "<br>");
+          this.project.description = this.project.description?.replace(/\n/g, "<br>");
           if(this.project.others){
             const url = 'https://www.youtube.com/embed/'+this.project.others[0].split('v=')[this.project.others[0].split('v=').length - 1];
             this.youtube = this.sanitizer.bypassSecurityTrustResourceUrl(url);
             this.video = true;
-            console.log(this.youtube)
           }
         }
       }

@@ -2,6 +2,9 @@
     padding: 32px 16px;
     background: linear-gradient( var(--darkPrimary) 0%, black 100%);
 }
+* i{
+    margin-left: 0;
+}
 @media (min-width:1024px) {
     .content{
         padding: 5vh 15vw 10vh 15vw;

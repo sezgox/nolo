@@ -10,10 +10,9 @@ import { Project } from 'src/app/core/interfaces/Project';
   templateUrl: './project-card.component.html',
   styleUrl: './project-card.component.css'
 })
-export class ProjectCardComponent {
-
-
+export class ProjectCardComponent{
   @Input() project: Project = {title:'',description:'',genre:'',media:[],responsabilities:[], skills:[], links:[], date: '', _id: ''};
+
 
   router = inject(Router);
 

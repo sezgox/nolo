@@ -55,7 +55,7 @@ export class EditProjectComponent implements OnInit{
       next: (result) => {
         if(result.success){
           this.project = result.data
-          this.roles = this.project.responsabilities.length > 0;
+          this.roles = this.project.responsabilities!.length > 0;
           this.roleType = this.roles ? 'responsabilities' : 'skills'
           if(this.project.others){
             this.others = this.project.others[0]
@@ -69,10 +69,10 @@ export class EditProjectComponent implements OnInit{
   }
   
   updateProject(){
-    this.project.skills = this.project.skills.filter(skill => skill)
-    this.project.responsabilities = this.project.responsabilities.filter(resp => resp)
-    this.project.links = this.project.links.filter(link => link.name && link.url)
-    if((this.selectedFiles.length == 0 && this.project.media.length == 0) || !this.project.title || !this.project.description || !this.project.genre || this.project.links.length == 0 || this.project[this.roleType].length == 0 || !this.project.date){
+    this.project.skills = this.project.skills?.filter(skill => skill)
+    this.project.responsabilities = this.project.responsabilities?.filter(resp => resp)
+    this.project.links = this.project.links?.filter(link => link.name && link.url)
+    if(!this.project.title || !this.project.date){
       console.log('Rellena todos los campos!!')
     }else{
       if(this.others){
@@ -113,8 +113,8 @@ export class EditProjectComponent implements OnInit{
   }
   
   removeImage(index: number){
-    this.selectedFiles = this.selectedFiles.filter(file => file.name != this.project.media[index])
-    this.project.media.splice(index,1);
+    this.selectedFiles = this.selectedFiles.filter(file => file.name != this.project.media![index])
+    this.project.media?.splice(index,1);
   }
 
   removeFile(){
@@ -125,7 +125,7 @@ export class EditProjectComponent implements OnInit{
   onFileSelected(event: any) {
     const file:File = event.target.files[0];
     if(event.target.id == 'image'){
-      this.project.media.push(file.name);
+      this.project.media?.push(file.name);
       this.selectedFiles.push(file);
     }else{
       this.file = file;
@@ -134,16 +134,16 @@ export class EditProjectComponent implements OnInit{
   }
   addField(field: string){
     if(field == 'responsabilities' || field == 'skills'){
-      this.project[field].push('');
+      this.project[field]?.push('');
     }
     if(field == 'links'){
-      this.project[field].push({name: '',url: ''});
+      this.project[field]?.push({name: '',url: ''});
     }
   }
 
   removeField(field:string,index:number){
     if(field == 'links' || field == 'responsabilities' || field == 'skills'){
-      this.project[field].splice(index,1);
+      this.project[field]?.splice(index,1);
     }
   }
 

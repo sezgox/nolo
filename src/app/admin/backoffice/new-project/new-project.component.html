@@ -16,8 +16,8 @@
                     </div>
                     @for (link of project.links; track $index) {
                         <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                            <input type="text" placeholder="Link Name" style="width: 40%;" [(ngModel)]="project.links[$index].name" [name]="'link'+$index" id="nameLink">
-                            <input type="text" placeholder="https://url_to_game.com" style="width: 40%; margin-left: 12px;" [(ngModel)]="project.links[$index].url" [name]="'link'+$index" id="urlLink">
+                            <input type="text" placeholder="Link Name" style="width: 40%;" [(ngModel)]="project.links![$index].name" [name]="'link'+$index" id="nameLink">
+                            <input type="text" placeholder="https://url_to_game.com" style="width: 40%; margin-left: 12px;" [(ngModel)]="project.links![$index].url" [name]="'link'+$index" id="urlLink">
                             <button 
                                 (click)="removeField('links',$index)" 
                                 class="remove"  
@@ -44,7 +44,7 @@
                 </div>
                 @for (rol of project[roleType]; track $index) {
                     <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                        <input type="text" placeholder="Responsabilitie/skill..." style="width: 80%;" [(ngModel)]="project[roleType][$index]" [name]="roleType+$index">
+                        <input type="text" placeholder="Responsabilitie/skill..." style="width: 80%;" [(ngModel)]="project[roleType]![$index]" [name]="roleType+$index">
                         <button 
                         (click)="removeField(roleType,$index)" 
                         class="remove"
